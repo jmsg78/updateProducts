@@ -3,6 +3,7 @@ const { CarInsurance } = require('./CarInsurance.js');
 const { ProductFullCoverage } = require('./ProductFullCoverage');
 const { ProductMegaCoverage } = require('./ProductMegaCoverage');
 const { ProductFullCoverageSpecial } = require('./ProductFullCoverageSpecial');
+const { ProductSuperSale } = require('./ProductSuperSale');
 
 const productsAtDayZero = [
   new Product('Medium Coverage', 10, 20),
