@@ -41,3 +41,5 @@ On the other hand, to obtain the required results, you must run the following co
 ```bash
 npm run after-30-days
 ```
+## Coverage report
+![Begin](/screenshot/coverage-compara-1.png)
