@@ -57,5 +57,8 @@ Thumbs.db
 # dotenv environment variables file
 .env
 
+#file covergae
+.nyc_output
+
 # Visual Code Studio
 /.vscode
