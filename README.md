@@ -43,3 +43,5 @@ npm run after-30-days
 ```
 ## Coverage report
 ![Begin](/screenshot/coverage-compara-1.png)
+![Begin](/screenshot/coverage-compara-2.png)
+![Begin](/screenshot/coverage-compara-3.png)
