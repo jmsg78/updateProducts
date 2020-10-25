@@ -31,5 +31,21 @@ describe("Create a New  Special Full Coverage Product", function() {
     expect(products[0].price).equal(32);
   });
 
+  it("should create a new Special Full Coverage Product #4 when 4 days left", function() {
+    const productList = new CarInsurance([ new ProductFullCoverageSpecial("Special Full Coverage", 4, 30) ]);
+    const products = productList.updatePrice();
+    expect(products[0].price).equal(33);
+  });
 
+   it("should create a new Special Full Coverage Product #4 when no more days left", function() {
+    const productList = new CarInsurance([ new ProductFullCoverageSpecial("Special Full Coverage", 0, 10) ]);
+    const products = productList.updatePrice();
+    expect(products[0].price).equal(0);
+  });
+
+     it("should create a new Special Full Coverage Product #4 when price is maxPrice", function() {
+    const productList = new CarInsurance([ new ProductFullCoverageSpecial("Special Full Coverage",12, 50) ]);
+    const products = productList.updatePrice();
+    expect(products[0].price).equal(50);
+  });
 });
