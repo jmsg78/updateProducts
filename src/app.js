@@ -20,9 +20,12 @@ const productsAtDayZero = [
 const carInsurance = new CarInsurance(productsAtDayZero);
 const productPrinter = (product) =>  console.log(`${product.name}, ${product.sellIn}, ${product.price}`);
 
-for (let i = 1; i <= 30; i += 1) {
-  console.log(`Day ${i}`);
-  console.log('name, sellIn, price');
-  carInsurance.updatePrice().forEach(productPrinter);
-  console.log('');
+for (let i = 0; i <= 30; i += 1) {
+  console.log(`--------- day ${i} -----------`);
+  console.log('name, sellIn, price, type');
+  if (i == 0) {
+    carInsurance.products.forEach(productPrinter)
+  } else {
+  carInsurance.updatePrice().forEach(productPrinter); 
+  console.log('');}
 }
