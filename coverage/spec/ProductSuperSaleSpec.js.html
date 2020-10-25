@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -85,15 +85,24 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -101,46 +110,61 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const expect = require('chai').expect;
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const expect = require("chai").expect;
 &nbsp;
-const { Product } = require('../src/coTest');
-const { CarInsurance } = require('../src/CarInsurance');
-const { ProductSuperSale } = require('../src/ProductSuperSale');
+const { Product } = require("../src/coTest");
+const { ProductSuperSale } = require("../src/ProductSuperSale");
 &nbsp;
-describe("Create a New  Super Sale Product", function() {
-&nbsp;
-  it("should create a new Super Sale Product #1 degrade one day ", function() {
-    const productList = new CarInsurance([ new ProductSuperSale("Super Sale", 3, 6) ]);
-    const products = productList.updatePrice();
-    expect(products[0].sellIn).equal(2);
+describe("Create a New  Super Sale Product", function () {
+  it("should create a new Super Sale Product #1 degrade one day ", function () {
+        const product = new ProductSuperSale(
+      new Product("Super Sale", 3, 6)
+    );
+    product.updatePrice();
+    expect(product.price).equal(4);
+    expect(product.sellIn).equal(2);
   });
 &nbsp;
-  it("should create a new Super Sale Product #2 degrade in price twice as fast as normal Products.", function() {
-    const productList = new CarInsurance([ new ProductSuperSale("Super Sale", 3, 6) ]);
-    const products = productList.updatePrice();
-    expect(products[0].price).equal(4);
+  it("should create a new Super Sale Product #2 degrade in price twice as fast as normal Products.", function () {
+    const product = new ProductSuperSale(
+      new Product("Super Sale", 1, 2)
+    );
+    product.updatePrice();
+    expect(product.price).equal(0);
+    expect(product.sellIn).equal(0);
+&nbsp;
   });
 &nbsp;
-   it("should create a new Super Sale Product #3 when price &lt; 0.", function() {
-    const productList = new CarInsurance([ new ProductSuperSale("Super Sale", 3, -1) ]);
-    const products = productList.updatePrice();
-    expect(products[0].price).equal(0);
-  });
+  it("should create a new Super Sale Product #3 when price &lt; 0.", function () {
 &nbsp;
+ const product = new ProductSuperSale(
+      new Product("Super Sale", 1, 0)
+    );
+    product.updatePrice();
+    expect(product.price).equal(0);
+    expect(product.sellIn).equal(0);
+&nbsp;
+  });
 });
-&nbsp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -148,7 +172,7 @@ describe("Create a New  Super Sale Product", function() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Oct 25 2020 09:43:52 GMT-0500 (GMT-05:00)
+                at Sun Oct 25 2020 16:33:23 GMT-0500 (GMT-05:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

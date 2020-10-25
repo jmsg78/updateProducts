@@ -1,9 +1,6 @@
-const { Product } = require('./coTest');
+const { ProductDefault } = require('./ProductDefault');
 
-class ProductFullCoverage extends Product {
-  constructor(name,sellIn, price ) {
-    super(name, sellIn, price);
-  }
+class ProductFullCoverage extends ProductDefault {
 
   updatePrice() {
         if ( this.price < this.maxPrice ) {

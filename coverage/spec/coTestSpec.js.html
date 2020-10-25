@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -90,19 +90,15 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -119,43 +115,50 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const expect = require('chai').expect;
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const expect = require("chai").expect;
 &nbsp;
-const { Product } = require('../src/coTest');
-const { CarInsurance } = require('../src/CarInsurance');
+const { Product } = require("../src/coTest");
+const { ProductDefault } = require("../src/ProductDefault");
+const { CarInsurance } = require("../src/CarInsurance");
 &nbsp;
-describe("Create a New Product", function() {
 &nbsp;
-  it("should create a new Product #1 called Medium Product", function() {
-    const coTest = new CarInsurance([ new Product("Medium Product", 2, 3) ]);
-    const products = coTest.updatePrice();
-    expect(products[0].name).equal("Medium Product");
+describe("Create a New Product", function () {
+  it("should create a new Product #1 called Medium Product", function () {
+    const product = new ProductDefault(new Product("Medium Product", 2, 3));
+    product.updatePrice();
+    expect(product.name).equal("Medium Product");
   });
 &nbsp;
-    it("should create a new Product #2 when price is maxPrice", function() {
-    const productList = new CarInsurance([ new Product("Special Full Coverage",12, 50) ]);
-    const products = productList.updatePrice();
-    expect(products[0].price).equal(49);
+  it("should create a new Product #2 when price is maxPrice", function () {
+    const product = new ProductDefault(new Product("Medium Product", 12, 50));
+    product.updatePrice();
+    expect(product.price).equal(49);
   });
 &nbsp;
-it("should create a new Product #3 when no more days left", function() {
-    const productList = new CarInsurance([ new Product("Special Full Coverage",0, 50) ]);
-    const products = productList.updatePrice();
-    expect(products[0].price).equal(49);
+  it("should create a new Product #3 when no more days left", function () {
+    const product = new ProductDefault(new Product("Medium Product", 0, 50));
+    product.updatePrice();
+    expect(product.price).equal(49);
+    expect(product.sellIn).equal(-1);
   });
 &nbsp;
-  it("should create a new Product #4 when no more days left and price is 0", function() {
-    const productList = new CarInsurance([ new Product("Special Full Coverage",0, 0) ]);
-    const products = productList.updatePrice();
-    expect(products[0].price).equal(0);
+  it("should create a new Product #4 when no more days left and price is 0", function () {
+    const product = new ProductDefault(new Product("Medium Product", 0, 0));
+    product.updatePrice();
+    expect(product.price).equal(0);
+    expect(product.sellIn).equal(-1);
   });
-&nbsp;
 });
-&nbsp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -163,7 +166,7 @@ it("should create a new Product #3 when no more days left", function() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Oct 25 2020 09:43:52 GMT-0500 (GMT-05:00)
+                at Sun Oct 25 2020 16:33:23 GMT-0500 (GMT-05:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

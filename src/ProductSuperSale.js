@@ -1,20 +1,15 @@
-const { Product } = require('./coTest');
+const { ProductDefault } = require("./ProductDefault");
 
-
-class ProductSuperSale extends Product {
-  constructor(name,sellIn, price ) {
-    super(name, sellIn, price);
-  }
+class ProductSuperSale extends ProductDefault {
   updatePrice() {
-
-      if ((this.price - (this.ratePerDay * this.factorDatePassed) ) > 0 ) { 
-        this.price = this.price - (this.ratePerDay * this.factorDatePassed);
-      } else {
-        this.price = 0;
-      }
-       this.reduceOneDay();
+    if (this.price - this.ratePerDay * this.factorDatePassed > 0) {
+      this.price = this.price - this.ratePerDay * this.factorDatePassed;
+    } else {
+      this.price = 0;
     }
+    this.reduceOneDay();
+  }
 }
 module.exports = {
   ProductSuperSale,
-}
+};
