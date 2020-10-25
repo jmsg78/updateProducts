@@ -31,11 +31,13 @@ Locate the path where you made the download or copy (clone) of the repository, b
 ```bash
 npm install
 ```
-Now, if you want to run the tests performed, you can do the following
+Now, if you want to run the tests performed, you can do the following. 
 ```bash
-npm runt test
+npm run test
 ```
-To obtain the required results, you must run the following command.
+This command will display the coverage covered in text and html format. The html is generated in a folder called coverage, the text, in the console.
+
+On the other hand, to obtain the required results, you must run the following command.
 ```bash
 npm run after-30-days
 ```
